@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+  --text-primary: #f6f8ff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --glass-bg: rgba(8, 12, 22, 0.75);
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --dark-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: radial-gradient(circle at 20% 20%, rgba(72, 149, 239, 0.25), transparent 50%),
+              radial-gradient(circle at 80% 0%, rgba(252, 92, 125, 0.18), transparent 50%),
+              radial-gradient(circle at 50% 80%, rgba(102, 126, 234, 0.15), transparent 45%),
+              linear-gradient(135deg, #030508, #05070f 35%, #0a0e18 70%, #030508);
+  background-size: 300% 300%;
+  animation: gradientFlow 20s ease infinite;
+  overflow-x: hidden;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 0%, 100% 100%, 50% 50%, 0% 50%;
+  }
+  33% {
+    background-position: 100% 50%, 0% 0%, 100% 100%, 50% 100%;
+  }
+  66% {
+    background-position: 50% 100%, 50% 50%, 0% 0%, 100% 50%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%, 0% 50%;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
