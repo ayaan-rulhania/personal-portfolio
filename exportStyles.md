@@ -160,9 +160,11 @@ function ComponentWithKineticTypography() {
 
 ## 2. Glassmorphic Card Design
 
-A modern card design with glassmorphism effects, smooth hover animations, and gradient text.
+A modern card design with glassmorphism effects, smooth hover animations, and gradient text. Includes styling for cards, card headers, card descriptions, and section subtitles.
 
 ### CSS Implementation
+
+#### Card Container Styles
 
 ```css
 .game-card {
@@ -190,7 +192,12 @@ A modern card design with glassmorphism effects, smooth hover animations, and gr
   transform: translateY(-8px);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
 }
+```
 
+#### Card Text Styles
+
+```css
+/* Card Header/Title - Animated Gradient Text */
 .game-name {
   font-size: 1.8rem;
   font-weight: 600;
@@ -202,12 +209,28 @@ A modern card design with glassmorphism effects, smooth hover animations, and gr
   animation: gradientFlow 8s ease infinite;
 }
 
+/* Card Description/Body Text */
 .game-description {
   font-size: 0.95rem;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.8);
 }
+```
 
+#### Section Subtitle (Above Cards)
+
+```css
+/* Subtitle text that appears above the card grid */
+.menu-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.75);
+}
+```
+
+#### Gradient Flow Animation (Required for Card Headers)
+
+```css
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
@@ -221,13 +244,57 @@ A modern card design with glassmorphism effects, smooth hover animations, and gr
 }
 ```
 
+#### Responsive Text Sizes
+
+```css
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+  .menu-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+  }
+
+  .game-name {
+    font-size: 1.6rem;
+  }
+
+  .game-description {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .menu-subtitle {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    padding: 0 10px;
+  }
+
+  .game-name {
+    font-size: 1.4rem;
+  }
+
+  .game-description {
+    font-size: 0.85rem;
+  }
+}
+```
+
 ### HTML/JSX Structure
 
 ```jsx
-<button className="game-card" type="button">
-  <h2 className="game-name">Card Title</h2>
-  <p className="game-description">Card description text here</p>
-</button>
+<div className="menu-container">
+  <h1 className="menu-title">Main Title</h1>
+  <p className="menu-subtitle">Choose a game to play</p>
+  
+  <div className="games-grid">
+    <button className="game-card" type="button">
+      <h2 className="game-name">Card Title</h2>
+      <p className="game-description">Card description text here</p>
+    </button>
+  </div>
+</div>
 ```
 
 ### How to Implement
@@ -244,17 +311,27 @@ A modern card design with glassmorphism effects, smooth hover animations, and gr
    - Adjust `translateY(-8px)` to change lift distance
    - Modify `box-shadow` for different shadow intensity
 
-3. **Add gradient text** (optional):
-   - Use `.game-name` styles for gradient text effect
-   - Requires the `gradientFlow` keyframe animation
-   - Adjust gradient colors to match your theme
+3. **Add card text styles**:
+   - **Card Headers (`.game-name`)**: Animated gradient text effect
+     - Requires the `gradientFlow` keyframe animation
+     - Uses `background-clip: text` to create gradient text
+     - Adjust gradient colors to match your theme
+   - **Card Descriptions (`.game-description`)**: Regular body text
+     - Semi-transparent white color for readability
+     - Adjust `font-size` and `line-height` as needed
 
-4. **Customization**:
-   - Change `border-radius` for different corner roundness
-   - Adjust `padding` for different spacing
-   - Modify `backdrop-filter: blur()` value for more/less blur
-   - Change background rgba values for different opacity/color
-   - Update gradient colors in `.game-name` for different text colors
+4. **Add section subtitle**:
+   - Use `.menu-subtitle` for text that appears above the card grid
+   - Semi-transparent white color for subtle appearance
+   - Adjust `margin-bottom` for spacing
+
+5. **Customization**:
+   - **Card styling**: Change `border-radius`, `padding`, `backdrop-filter: blur()` value
+   - **Card header colors**: Update gradient colors in `.game-name` (currently: `#43e97b, #38f9d7, #667eea, #764ba2`)
+   - **Card description color**: Change `color` value in `.game-description` (currently `rgba(255, 255, 255, 0.8)`)
+   - **Subtitle color**: Adjust `color` in `.menu-subtitle` (currently `rgba(255, 255, 255, 0.75)`)
+   - **Font sizes**: Adjust `font-size` values for different text scales
+   - **Animation speed**: Change `8s` in `.game-name` animation for faster/slower gradient flow
 
 ---
 
