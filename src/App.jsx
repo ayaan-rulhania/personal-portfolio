@@ -51,12 +51,17 @@ function App() {
     const text = titleEl.textContent
     titleEl.innerHTML = '' // clear before injecting spans
 
+    // Calculate delay to finish at same time as name title
+    // "Ayaan Rulhania" = 14 chars * 50ms = 700ms
+    // "My Works" = 8 chars, so we need: 700ms / 8 = ~88ms per char
+    const charsPerMs = 88
+
     ;[...text].forEach((ch, i) => {
       const span = document.createElement('span')
       span.className = 'char'
       span.style.display = 'inline-block'
-      // Typing effect: characters appear quickly one by one (same timing as name title)
-      span.style.animationDelay = `${i * 50}ms`
+      // Typing effect: slower per character to finish at same time as name title
+      span.style.animationDelay = `${i * charsPerMs}ms`
       span.textContent = ch === ' ' ? '\u00A0' : ch // preserve spaces with non-breaking space
       titleEl.appendChild(span)
     })
