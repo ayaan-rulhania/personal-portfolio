@@ -18,7 +18,8 @@ function App() {
       const span = document.createElement('span')
       span.className = 'char'
       span.style.display = 'inline-block'
-      span.style.animationDelay = `${i * 40}ms, ${i * 60}ms`
+      // Typing effect: characters appear quickly one by one
+      span.style.animationDelay = `${i * 50}ms`
       span.textContent = ch === ' ' ? '\u00A0' : ch // preserve spaces with non-breaking space
       titleEl.appendChild(span)
     })
@@ -50,11 +51,15 @@ function App() {
     const text = titleEl.textContent
     titleEl.innerHTML = '' // clear before injecting spans
 
+    // Delay section title typing to start after name title
+    const startDelay = 800 // Start after name title finishes typing
+
     ;[...text].forEach((ch, i) => {
       const span = document.createElement('span')
       span.className = 'char'
       span.style.display = 'inline-block'
-      span.style.animationDelay = `${i * 40}ms, ${i * 60}ms`
+      // Typing effect: characters appear quickly one by one, with delay after name title
+      span.style.animationDelay = `${startDelay + i * 50}ms`
       span.textContent = ch === ' ' ? '\u00A0' : ch // preserve spaces with non-breaking space
       titleEl.appendChild(span)
     })
