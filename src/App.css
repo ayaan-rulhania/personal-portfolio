@@ -117,11 +117,9 @@
   opacity: 0;
   vertical-align: baseline;
   overflow: visible;
+  /* Animation delays are set via inline styles in JS */
   animation: typingEffect 0.3s ease-out forwards, gradientFlowText 6s ease-in-out infinite, floatTilt 4s ease-in-out infinite;
-}
-
-.menu-title .char:nth-child(1) {
-  animation-delay: 0ms, 0ms, 0ms;
+  animation-fill-mode: forwards;
 }
 
 @keyframes typingEffect {
